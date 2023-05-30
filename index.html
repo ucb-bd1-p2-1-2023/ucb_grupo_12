@@ -8,46 +8,77 @@
     <title>In Driver</title>
 </head>
 <body>
-    <div class="box">
-        <h5 class="title is-1">🚘 Driver Form</h5>
-        <h2 class="subtitle is-3">Fill your data in this form</h2>
-    </div>
-    <div class="box my-6">
-        <div class="field">
-            <label class="label" for="firstName">First name:</label>
-            <div class="control">
-                <input class="input" type="text" id="firstName" placeholder="Exammple: Carlos">
+    <section class="section">
+        <div class="container">
+            <div class="box">
+                <h5 class="title is-1">🚘 Driver Form</h5>
+                <h2 class="subtitle is-3">Fill in the vehicle data in this form</h2>
+            </div>
+            <div class="box my-6">
+                <div class="field">
+                    <label class="label" for="idConductor">CI:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="idConductor" placeholder="Exammple: 3247396">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="licensenumber">License number:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="licensenumber" placeholder="Exammple: 3247396">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="carmake">Car make:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="carmake" placeholder="Example: Toyota ">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="carmodel">Car model:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="carmodel" placeholder="Example: Sedan">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="carcolor">Car color:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="carcolor" placeholder="Example: Rojo">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="caryear">Car year:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="caryear" placeholder="Example: 3">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="carlicenceplate">Car licence plate:</label> 
+                    <div class="control">
+                        <input class="input" type="carlicenceplate" id="carlicenceplate" placeholder="Example: 5242anr">
+                    </div>
+                </div>
+                <div class="block">
+                    <button class="button is-primary is-meidum is-fullwidth mt-6" onclick="submitForm()">Submit</button>
+                </div>    
             </div>
         </div>
-        <div class="field">
-            <label class="label" for="lastName">Last name:</label>
-            <div class="control">
-                <input class="input" type="text" id="lastName" placeholder="Example: Terraza">
-            </div>
-        </div>
-        <div class="field">
-            <label class="label" for="email">Email:</label>
-            <div class="control">
-                <input class="input" type="text" id="email" placeholder="Example: carlos@gmail.com">
-            </div>
-        </div>
-        <div class="block">
-            <button class="button is-primary is-meidum is-fullwidth mt-6" onclick="submitForm()">Submit</button>
-        </div>
-    </div>
+    </section>
     <script>
         function submitForm() {
 
             function getValues() {
                 return {
-                    firstName: document.getElementById('firstName').value,
-                    lastName: document.getElementById('lastName').value,
-                    email: document.getElementById('email').value,
+                    idConductor: document.getElementById('idConductor').value,
+                    licensenumber: document.getElementById('licensenumber').value,
+                    carmake: document.getElementById('carmake').value,
+                    carmodel: document.getElementById('carmodel').value,
+                    carcolor: document.getElementById('carcolor').value,
+                    caryear: document.getElementById('caryear').value,
+                    carlicenceplate: document.getElementById('carlicenceplate').value,
                 }
             }
             
-
-            const url = 'http://localhost:3000/driver';
+            const url = 'http://localhost:3000/conductor';
             const method = 'POST';
             const headers = {
                 'Accept': 'application/json',
@@ -59,6 +90,7 @@
             .then(response => response.json())
             .then(response => console.log(JSON.stringify(response)))
         }
+        //revisar peticion
     </script>
 </body>
 </html>

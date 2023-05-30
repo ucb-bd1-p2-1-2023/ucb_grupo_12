@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333333;
+      padding: 20px 0;
+    }
+
+    .container {
+      width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid #dddddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Métodos de Pago 💳</h1>
+    <table>
+      <tr>
+        <th>Método de Pago</th>
+        <th>Descripción</th>
+      </tr>
+      <tr>
+        <td>
+          <div class="button-container">
+            <a href="pagos_tarjeta.html" class="button">Pago con Tarjeta</a>
+          </div>
+        </td>
+        <td>Este método de pago permite realizar transacciones utilizando una tarjeta de crédito o débito.</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="button-container">
+            <a href="pago_efectivo.html" class="button">Pago en Efectivo</a>
+          </div>
+        </td>
+        <td>Este método de pago consiste en entregar el monto correspondiente en efectivo al momento de la compra.</td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

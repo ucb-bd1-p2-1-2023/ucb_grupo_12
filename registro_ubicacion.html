@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tramo-viaje 🌎</title>
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title is-1">Date trips🌎</h1>
+            <h2 class="subtitle is-3">Fill your data in this form</h2>
+
+            <form>
+                <div class="field">
+                    <label class="label" for="fecha">Date:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="fecha" placeholder="Example: 15/11/2023">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="startLocation">Punto de partida:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="startLocation" name="startLocation" placeholder="Ejemplo: UCB">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="endLocation">Punto de llegada:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="endLocation" name="endLocation" placeholder="Ejemplo: Quillacollo">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="price">Sugerir precio:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="price" name="price" placeholder="Ejemplo: 50">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <a href="btn_pagos.html">
+                        <button class="button is-primary is-medium" type="button" onclick="submitForm()">Enviar</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <a class="button is-link is-medium" onclick="openMapModal()">Seleccionar en el mapa</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal" id="mapModal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <iframe src="mapa_trayecto.html" frameborder="0"></iframe>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close" onclick="closeMapModal()"></button>
+    </div>
+
+    <script>
+        function submitForm() {
+            function getValues() {
+                return {
+                    fecha: document.getElementById('fecha').value,
+                    startLocation: document.getElementById('startLocation').value,
+                    endLocation: document.getElementById('endLocation').value,
+                    price: document.getElementById('price').value,
+                };
+            }
+
+            const url = 'http://localhost:3000/registro_ubicacion';
+            const method = 'POST';
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            const body = JSON.stringify(getValues());
+            const metadata = { method, headers, body };
+            fetch(url, metadata)
+                .then(response => response.json())
+                .then(response => console.log(JSON.stringify(response)))
+                .catch(error => console.error(error));
+        }
+
+        function openMapModal() {
+            document.getElementById('mapModal').classList.add('is-active');
+        }
+
+        function closeMapModal() {
+            document.getElementById('mapModal').classList.remove('is-active');
+        }
+
+        function setLocations(startLocation, endLocation) {
+            document.getElementById('startLocation').value = startLocation;
+            document.getElementById('endLocation').value = endLocation;
+        }
+    </script>
+</body>
+</html>

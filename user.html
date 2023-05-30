@@ -8,54 +8,61 @@
     <title>In Driver</title>
 </head>
 <body>
-    <div class="box">
-        <h1 class="title is-1">User Form</h1>
-        <h2 class="subtitle is-3">Fill your information</h2>
-    </div>
-    <div class="box my-6">
-        <div class="field">
-            <label class="label" for="firstName">First name:</label>
-            <div class="control">
-                <input class="input" type="text" id="firstName" placeholder="Example: Jarol">
+    <section class="section">
+        <div class="container">
+            <div class="box">
+                <h1 class="title is-1">User Form</h1>
+                <h2 class="subtitle is-3">Fill your information</h2>
+            </div>
+            <div class="box">
+                <div class="field">
+                    <label class="label" for="firstName">First name:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="firstName" placeholder="Example: Jarol">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="lastName">Last name:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="lastName" placeholder="Example: Lopez">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="email">Email:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="email" placeholder="Example: JarolLopez@gmail.com">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="telephone">Telephone:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="telephone" placeholder="Example: 75988093">
+                    </div>
+                <div class="field">
+                    <label class="label" for="password">Password:</label>
+                    <div class="control">
+                        <input class="input" type="password" id="password" placeholder="Enter your password">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary is-medium is-fullwidth mt-6" onclick="submitForm()">Submit</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="field">
-            <label class="label" for="lastName">Last name:</label>
-            <div class="control">
-                <input class="input" type="text" id="lastName" placeholder="Example: Lopez">
-            </div>
-        </div>
-        <div class="field">
-            <label class="label" for="email">Email:</label>
-            <div class="control">
-                <input class="input" type="text" id="email" placeholder="Example: JarolLopez@gmail.com">
-            </div>
-        
-        </div>
-        <div class="field">
-            <label class="label" for="telephone">Telephone:</label>
-            <div class="control">
-                <input class="input" type="text" id="telephone" placeholder="Example: 75988093">
-            </div>
-
-        </div>
-
-        
-        <div class="block">
-            <button class="button is-primary is-meidum is-fullwidth mt-6" onclick="submitForm()">Submit</button>
-        </div>
-    </div>
+    </section>
     <script>
         function submitForm() {
-
             function getValues() {
                 return {
                     firstName: document.getElementById('firstName').value,
                     lastName: document.getElementById('lastName').value,
                     email: document.getElementById('email').value,
-                }
+                    telephone: document.getElementById('telephone').value,
+                    password: document.getElementById('password').value,
+                };
             }
-            
 
             const url = 'http://localhost:3000/driver';
             const method = 'POST';
@@ -67,7 +74,7 @@
             const medatata = { method, headers, body };
             fetch(url, medatata)
             .then(response => response.json())
-            .then(response => console.log(JSON.stringify(response)))
+            .then(response => console.log(JSON.stringify(response)));
         }
     </script>
 </body>

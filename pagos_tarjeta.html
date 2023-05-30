@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>In Driver - Payments</title>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="box">
+                <h1 class="title is-1">💳 Payment Form</h1>
+                <h2 class="subtitle is-3">Enter your payment details</h2>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-one-third">
+                    <div class="box my-6">
+                        <div class="field">
+                            <label class="label" for="cardNumber">Card Number:</label>
+                            <div class="control">
+                                <input class="input" type="text" id="cardNumber" placeholder="Enter your card number">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="expirationDate">Expiration Date:</label>
+                            <div class="control">
+                                <input class="input" type="text" id="expirationDate" placeholder="MM/YYYY">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="cvv">CVV:</label>
+                            <div class="control">
+                                <input class="input" type="password" id="cvv" placeholder="Enter CVV">
+                            </div>
+                        </div>
+                        <div class="block">
+                            <button class="button is-primary is-fullwidth mt-6" onclick="submitPayment()">Submit Payment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function submitPayment() {
+            function getPaymentDetails() {
+                return {
+                    cardNumber: document.getElementById('cardNumber').value,
+                    expirationDate: document.getElementById('expirationDate').value,
+                    cvv: document.getElementById('cvv').value,
+                }
+            }
+            
+            const url = 'http://localhost:3000/payments';
+            const method = 'POST';
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            const body = JSON.stringify(getPaymentDetails());
+            const metadata = { method, headers, body };
+            fetch(url, metadata)
+                .then(response => response.json())
+                .then(response => console.log(JSON.stringify(response)))
+        }
+    </script>
+</body>
+</html>

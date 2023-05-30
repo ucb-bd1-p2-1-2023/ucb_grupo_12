@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>In Driver - Log In</title>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="box">
+                <h1 class="title is-1">Log In</h1>
+                <h2 class="subtitle is-3">Enter your credentials</h2>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-one-third">
+                    <div class="box my-6">
+                        <div class="field">
+                            <label class="label" for="email">Email:</label>
+                            <div class="control">
+                                <input class="input" type="text" id="email" placeholder="Example: jarollopez@gmail.com">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="password">Password:</label>
+                            <div class="control">
+                                <input class="input" type="password" id="password" placeholder="Enter your password">
+                            </div>
+                        </div>
+                        <div class="block">
+                            <button class="button is-primary is-fullwidth mt-6" onclick="logIn()">Log In</button>
+                        </div>
+                        <div class="notification is-danger mt-6" id="errorMessage" style="display: none;">
+                            <button class="delete" onclick="hideErrorMessage()"></button>
+                            This user already exists.
+                        </div>
+                        <div class="block">
+                            <button class="button is-link is-fullwidth mt-6" onclick="goBack()">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function logIn() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Aquí puedes realizar las operaciones necesarias para el inicio de sesión (log in) del usuario
+            if (checkIfUserExists(email)) {
+                showErrorMessage();
+                return;
+            }
+
+            // Aquí puedes continuar con el proceso de inicio de sesión
+            console.log(`Log In - Email: ${email}, Password: ${password}`);
+        }
+
+        function checkIfUserExists(email) {
+            // Simulación de verificación de existencia de usuario (para propósitos de demostración)
+            const existingUsers = ['jarollopez@gmail.com', 'test@example.com'];
+            return existingUsers.includes(email);
+        }
+
+        function showErrorMessage() {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.style.display = 'block';
+        }
+
+        function hideErrorMessage() {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.style.display = 'none';
+        }
+
+        function goBack() {
+            // Redireccionar o volver atrás en la página
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

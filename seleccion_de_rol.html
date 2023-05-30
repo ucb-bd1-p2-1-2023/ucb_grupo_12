@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>Seleccion de Rol</title>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="box has-text-centered">
+                <h1 class="title is-1">¿Es usted pasajero o conductor?</h1>
+                <h2 class="subtitle is-3">Selecciona tu rol</h2>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-one-third">
+                    <div class="buttons is-centered">
+                        <a href="registro_ubicacion2.html">
+                        <button class="button is-primary is-fullwidth mt-6" onclick="selectRole('Pasajero')">Pasajero</button>
+                        </a>
+                    </div>
+                    <div class="buttons is-centered">
+                        <a href="index.html">
+                        <button class="button is-primary is-fullwidth mt-6" onclick="selectRole('Conductor')">Conductor</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function selectRole(role) {
+            // Aquí puedes realizar las operaciones necesarias según el rol seleccionado
+            console.log(`Rol seleccionado: ${role}`);
+        }
+    </script>
+</body>
+</html>

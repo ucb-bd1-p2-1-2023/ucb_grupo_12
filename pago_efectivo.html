@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>In Driver - Cash Payment</title>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="box">
+                <h1 class="title is-1">💰 Cash Payment</h1>
+                <h2 class="subtitle is-3">Enter your payment details</h2>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-one-third">
+                    <div class="box my-6">
+                        <div class="field">
+                            <label class="label" for="firstName">First name:</label>
+                            <div class="control">
+                                <input class="input" type="text" id="firstName" placeholder="Example: Carlos">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="lastName">Last name:</label>
+                            <div class="control">
+                                <input class="input" type="text" id="lastName" placeholder="Example: Terraza">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="amount">Amount to Pay:</label>
+                            <div class="control">
+                                <input class="input" type="number" id="amount" placeholder="Enter the amount to pay">
+                            </div>
+                        </div>
+                        <div class="block">
+                            <button class="button is-primary is-fullwidth mt-6" onclick="submitPayment()">Submit Payment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function submitPayment() {
+            function getPaymentDetails() {
+                return {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    amount: document.getElementById('amount').value,
+                }
+            }
+            
+            const url = 'http://localhost:3000/cash-payment';
+            const method = 'POST';
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            const body = JSON.stringify(getPaymentDetails());
+            const metadata = { method, headers, body };
+            fetch(url, metadata)
+                .then(response => response.json())
+                .then(response => console.log(JSON.stringify(response)))
+        }
+    </script>
+</body>
+</html>

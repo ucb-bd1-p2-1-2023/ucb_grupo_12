@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>In Driver</title>
+</head>
+<body>
+    <div class="box">
+        <h5 class="title is-1"> Date trips</h5>
+        <h2 class="subtitle is-3">Fill your data in this form</h2>
+    </div>
+    <div class="box my-6">
+        <div class="field">
+            <label class="label" for="date">Date:</label>
+            <div class="control">
+                <input class="input" type="text" id="date" placeholder="Exammple: 15/11/2023">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label" for="partida">pickup_location:</label>
+            <div class="control">
+                <input class="input" type="text" id="partida" placeholder="Exammple: Av. America">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label" for="destino">dropoff_location:</label>
+            <div class="control">
+                <input class="input" type="text" id="destino" placeholder="Example: Av. circunvalacion">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label" for="recorrido">distance:</label>
+            <div class="control">
+                <input class="input" type="text" id="recorrido" placeholder="Example: 7km">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label" for="tiempo">duration:</label>
+            <div class="control">
+                <input class="input" type="text" id="tiempo" placeholder="Example: 15 min aprox">
+            </div>
+        </div>
+        <div class="block">
+            <button class="button is-primary is-meidum is-fullwidth mt-6" onclick="submitForm()">Submit</button>
+        </div>
+    </div>
+    <script>
+        function submitForm() {
+
+            function getValues() {
+                return {
+                    date: document.getElementById('date').value,
+                    partida: document.getElementById('partida').value,
+                    destino: document.getElementById('destino').value,
+                    recorrido: document.getElementById('recorridodestino').value,
+                    tiempo: document.getElementById('tiempo').value,
+                }
+            }
+            
+
+            const url = 'http://localhost:3000/datosViaje';
+            const method = 'POST';
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            const body = JSON.stringify(getValues());
+            const medatata = { method, headers, body };
+            fetch(url, medatata)
+            .then(response => response.json())
+            .then(response => console.log(JSON.stringify(response)))
+        }
+    </script>
+</body>
+</html>
